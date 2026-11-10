@@ -1,0 +1,29 @@
+#include <iostream>
+#include <fstream>
+
+int main() 
+{
+    int size = 0;
+    std::cout << "Vvedite razmer massiva: ";
+    std::cin >> size;
+    int* arr = new int[size];
+    for (int i = 0; i < size; ++i) 
+    {
+        std::cout << "arr[" << i << "] = ";
+        std::cin >> arr[i];
+    }
+    std::ofstream ofile("out.txt");
+    if (ofile.is_open()) 
+    {
+        ofile << size << std::endl;
+        for (int i = size - 1; i >= 0; --i) 
+        {
+            ofile << arr[i] << " ";
+        }
+        ofile << std::endl;
+        ofile.close();
+    } 
+    delete[] arr;
+
+    return EXIT_SUCCESS;
+}
